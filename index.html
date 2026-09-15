@@ -1,1 +1,870 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
 
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="theme-color"
+    content="#0d6efd"
+  >
+
+  <title>SIPRES SHALAT</title>
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+</head>
+
+<body>
+
+  <!-- ==================================================
+       HEADER
+  =================================================== -->
+
+  <header class="app-header">
+
+    <div class="header-content">
+
+      <div>
+        <h1>SIPRES SHALAT</h1>
+
+        <p>
+          SMA NEGERI 2 RANGKASBITUNG
+        </p>
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- ==================================================
+       HALAMAN UTAMA
+  =================================================== -->
+
+  <main class="container">
+
+    <!-- ================================================
+         PILIH PENGGUNA
+    ================================================= -->
+
+    <section
+      id="rolePage"
+      class="page active"
+    >
+
+      <div class="welcome-card">
+
+        <h2>
+          Selamat Datang
+        </h2>
+
+        <p>
+          Silakan pilih menu sesuai pengguna.
+        </p>
+
+        <div class="role-buttons">
+
+          <button
+            class="role-button guru"
+            onclick="showGuruLogin()"
+          >
+
+            <span class="role-icon">👨‍🏫</span>
+
+            <span>
+              Guru
+            </span>
+
+          </button>
+
+
+          <button
+            class="role-button umum"
+            onclick="showUmumPage()"
+          >
+
+            <span class="role-icon">👥</span>
+
+            <span>
+              Pengguna Umum
+            </span>
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================
+         LOGIN GURU
+    ================================================= -->
+
+    <section
+      id="loginPage"
+      class="page"
+    >
+
+      <div class="card login-card">
+
+        <button
+          class="back-button"
+          onclick="showRolePage()"
+        >
+          ← Kembali
+        </button>
+
+        <div class="login-icon">
+          👨‍🏫
+        </div>
+
+        <h2>
+          Login Guru
+        </h2>
+
+        <p class="description">
+          Masukkan akun guru untuk melakukan
+          presensi shalat.
+        </p>
+
+
+        <div class="form-group">
+
+          <label>
+            Username
+          </label>
+
+          <input
+            type="text"
+            id="username"
+            placeholder="Masukkan username"
+            autocomplete="username"
+          >
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>
+            Password
+          </label>
+
+          <input
+            type="password"
+            id="password"
+            placeholder="Masukkan password"
+            autocomplete="current-password"
+          >
+
+        </div>
+
+
+        <button
+          class="primary-button full"
+          onclick="loginGuru()"
+          id="loginButton"
+        >
+          LOGIN
+        </button>
+
+
+        <div
+          id="loginMessage"
+          class="message"
+        ></div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================
+         HALAMAN GURU
+    ================================================= -->
+
+    <section
+      id="guruPage"
+      class="page"
+    >
+
+      <div class="page-title">
+
+        <div>
+
+          <h2>
+            Presensi Shalat
+          </h2>
+
+          <p id="namaGuru">
+            Guru
+          </p>
+
+        </div>
+
+        <button
+          class="logout-button"
+          onclick="logoutGuru()"
+        >
+          Keluar
+        </button>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="form-group">
+
+          <label>
+            Tanggal
+          </label>
+
+          <input
+            type="date"
+            id="tanggalPresensi"
+          >
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>
+            Jenis Shalat
+          </label>
+
+          <div class="radio-group">
+
+            <label class="radio-card">
+
+              <input
+                type="radio"
+                name="jenisShalat"
+                value="Dhuha"
+              >
+
+              <span>
+                Dhuha
+              </span>
+
+            </label>
+
+
+            <label class="radio-card">
+
+              <input
+                type="radio"
+                name="jenisShalat"
+                value="Dhuhur"
+                checked
+              >
+
+              <span>
+                Dhuhur
+              </span>
+
+            </label>
+
+
+            <label class="radio-card">
+
+              <input
+                type="radio"
+                name="jenisShalat"
+                value="Ashar"
+              >
+
+              <span>
+                Ashar
+              </span>
+
+            </label>
+
+          </div>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>
+            Status
+          </label>
+
+          <div class="radio-group">
+
+            <label class="radio-card">
+
+              <input
+                type="radio"
+                name="statusPresensi"
+                value="Hadir"
+                checked
+              >
+
+              <span>
+                Hadir
+              </span>
+
+            </label>
+
+
+            <label class="radio-card">
+
+              <input
+                type="radio"
+                name="statusPresensi"
+                value="Haid"
+              >
+
+              <span>
+                Haid
+              </span>
+
+            </label>
+
+          </div>
+
+        </div>
+
+
+        <button
+          class="scan-button"
+          onclick="mulaiScan()"
+        >
+
+          <span>
+            📷
+          </span>
+
+          MULAI SCAN QR CODE
+
+        </button>
+
+      </div>
+
+
+      <!-- ============================================
+           AREA SCANNER
+      ============================================= -->
+
+      <div
+        id="scannerSection"
+        class="card scanner-card hidden"
+      >
+
+        <div class="scanner-header">
+
+          <h3>
+            Scanner QR Code
+          </h3>
+
+          <button
+            class="stop-button"
+            onclick="hentikanScan()"
+          >
+            Hentikan
+          </button>
+
+        </div>
+
+
+        <div
+          id="reader"
+          class="qr-reader"
+        ></div>
+
+
+        <div
+          id="scanStatus"
+          class="scan-status"
+        >
+          Scanner siap.
+        </div>
+
+
+        <div
+          id="scanNotification"
+          class="floating-notification"
+        ></div>
+
+      </div>
+
+
+      <!-- ============================================
+           HASIL SCAN TERAKHIR
+      ============================================= -->
+
+      <div
+        id="lastStudent"
+        class="card hidden"
+      >
+
+        <h3>
+          Presensi Terakhir
+        </h3>
+
+        <div
+          id="lastStudentContent"
+        ></div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================
+         HALAMAN UMUM
+    ================================================= -->
+
+    <section
+      id="umumPage"
+      class="page"
+    >
+
+      <div class="page-title">
+
+        <div>
+
+          <h2>
+            Rekap Presensi
+          </h2>
+
+          <p>
+            Informasi presensi shalat siswa
+          </p>
+
+        </div>
+
+        <button
+          class="logout-button"
+          onclick="showRolePage()"
+        >
+          Beranda
+        </button>
+
+      </div>
+
+
+      <!-- ============================================
+           MENU REKAP
+      ============================================= -->
+
+      <div class="menu-grid">
+
+        <button
+          class="menu-card"
+          onclick="showRekapHarian()"
+        >
+
+          <span class="menu-icon">
+            📊
+          </span>
+
+          <strong>
+            Rekap Harian
+          </strong>
+
+          <small>
+            Rekap presensi per kelas
+          </small>
+
+        </button>
+
+
+        <button
+          class="menu-card"
+          onclick="showRekapPersentase()"
+        >
+
+          <span class="menu-icon">
+            📈
+          </span>
+
+          <strong>
+            Persentase Presensi
+          </strong>
+
+          <small>
+            Persentase presensi total
+          </small>
+
+        </button>
+
+
+        <button
+          class="menu-card"
+          onclick="showRekapSiswa()"
+        >
+
+          <span class="menu-icon">
+            👤
+          </span>
+
+          <strong>
+            Rekap Per Siswa
+          </strong>
+
+          <small>
+            Riwayat presensi setiap siswa
+          </small>
+
+        </button>
+
+      </div>
+
+
+      <!-- ============================================
+           REKAP HARIAN
+      ============================================= -->
+
+      <div
+        id="rekapHarian"
+        class="rekap-section hidden"
+      >
+
+        <div class="card">
+
+          <button
+            class="back-button"
+            onclick="hideRekap()"
+          >
+            ← Menu Rekap
+          </button>
+
+          <h3>
+            Rekap Harian Per Kelas
+          </h3>
+
+
+          <div class="form-group">
+
+            <label>
+              Tanggal
+            </label>
+
+            <input
+              type="date"
+              id="rekapTanggal"
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Kelas
+            </label>
+
+            <select id="rekapKelas">
+
+              <option value="">
+                Semua Kelas
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Jenis Shalat
+            </label>
+
+            <select id="rekapShalat">
+
+              <option value="">
+                Semua Shalat
+              </option>
+
+              <option value="Dhuha">
+                Dhuha
+              </option>
+
+              <option value="Dhuhur">
+                Dhuhur
+              </option>
+
+              <option value="Ashar">
+                Ashar
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <button
+            class="primary-button full"
+            onclick="loadRekapHarian()"
+          >
+            TAMPILKAN
+          </button>
+
+
+          <div
+            id="rekapHarianResult"
+            class="result-area"
+          ></div>
+
+        </div>
+
+      </div>
+
+
+      <!-- ============================================
+           REKAP PERSENTASE
+      ============================================= -->
+
+      <div
+        id="rekapPersentase"
+        class="rekap-section hidden"
+      >
+
+        <div class="card">
+
+          <button
+            class="back-button"
+            onclick="hideRekap()"
+          >
+            ← Menu Rekap
+          </button>
+
+          <h3>
+            Persentase Presensi
+          </h3>
+
+
+          <div class="form-row">
+
+            <div class="form-group">
+
+              <label>
+                Mulai
+              </label>
+
+              <input
+                type="date"
+                id="persentaseMulai"
+              >
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label>
+                Sampai
+              </label>
+
+              <input
+                type="date"
+                id="persentaseSampai"
+              >
+
+            </div>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Kelas
+            </label>
+
+            <select id="persentaseKelas">
+
+              <option value="">
+                Semua Kelas
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Jenis Shalat
+            </label>
+
+            <select id="persentaseShalat">
+
+              <option value="">
+                Semua Shalat
+              </option>
+
+              <option value="Dhuha">
+                Dhuha
+              </option>
+
+              <option value="Dhuhur">
+                Dhuhur
+              </option>
+
+              <option value="Ashar">
+                Ashar
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <button
+            class="primary-button full"
+            onclick="loadRekapPersentase()"
+          >
+            TAMPILKAN
+          </button>
+
+
+          <div
+            id="rekapPersentaseResult"
+            class="result-area"
+          ></div>
+
+        </div>
+
+      </div>
+
+
+      <!-- ============================================
+           REKAP SISWA
+      ============================================= -->
+
+      <div
+        id="rekapSiswa"
+        class="rekap-section hidden"
+      >
+
+        <div class="card">
+
+          <button
+            class="back-button"
+            onclick="hideRekap()"
+          >
+            ← Menu Rekap
+          </button>
+
+          <h3>
+            Rekap Presensi Per Siswa
+          </h3>
+
+
+          <div class="form-group">
+
+            <label>
+              Pilih Siswa
+            </label>
+
+            <select id="siswaRekap">
+
+              <option value="">
+                Pilih siswa
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-row">
+
+            <div class="form-group">
+
+              <label>
+                Mulai
+              </label>
+
+              <input
+                type="date"
+                id="siswaMulai"
+              >
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label>
+                Sampai
+              </label>
+
+              <input
+                type="date"
+                id="siswaSampai"
+              >
+
+            </div>
+
+          </div>
+
+
+          <button
+            class="primary-button full"
+            onclick="loadRekapSiswa()"
+          >
+            TAMPILKAN REKAP
+          </button>
+
+
+          <div
+            id="rekapSiswaResult"
+            class="result-area"
+          ></div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- ==================================================
+       LOADING
+  =================================================== -->
+
+  <div
+    id="loading"
+    class="loading hidden"
+  >
+
+    <div class="loading-box">
+
+      <div class="spinner"></div>
+
+      <p>
+        Memproses...
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- ==================================================
+       JAVASCRIPT
+  =================================================== -->
+
+  <script src="app.js"></script>
+
+</body>
+</html>
