@@ -9,7 +9,7 @@
 ===================================================== */
 
 const API_URL =
-  "GANTI_DENGAN_URL_APPS_SCRIPT";
+  "https://script.google.com/macros/s/AKfycbzOSXoZM2rPe0TnbnuK8yl_VZu2S-HbuIx27eEboJ9YfASrBnP2CgIoDXeHeYZLEdwe/exec";
 
 
 /* =====================================================
