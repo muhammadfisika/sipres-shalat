@@ -786,3 +786,186 @@ th {
   }
 
 }
+
+
+/* =========================================
+   QR SCANNER
+========================================= */
+
+#scannerContainer {
+  width: 100%;
+  max-width: 500px;
+  margin: 20px auto;
+  background: #000;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+#reader {
+  width: 100%;
+  min-height: 280px;
+}
+
+#reader video {
+  width: 100% !important;
+  height: auto !important;
+  border-radius: 18px;
+}
+
+.scanner-status {
+  text-align: center;
+  margin: 12px 0;
+  padding: 12px;
+  border-radius: 12px;
+  background: #eef5ff;
+  font-weight: 600;
+}
+
+
+/* =========================================
+   TOMBOL SCAN
+========================================= */
+
+.scan-btn {
+  width: 100%;
+  padding: 16px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 14px;
+  background: #1677ff;
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.scan-btn:active {
+  transform: scale(0.98);
+}
+
+
+/* =========================================
+   STOP CAMERA
+========================================= */
+
+#btnStopScan {
+  width: 100%;
+  margin-top: 10px;
+}
+
+
+/* =========================================
+   NOTIFIKASI MELAYANG
+========================================= */
+
+.floating-notification {
+  position: fixed;
+
+  left: 50%;
+  top: 20px;
+
+  transform:
+    translate(-50%, -150px);
+
+  padding: 14px 22px;
+
+  border-radius: 12px;
+
+  color: white;
+
+  font-weight: bold;
+
+  z-index: 99999;
+
+  opacity: 0;
+
+  transition:
+    all 0.3s ease;
+
+  pointer-events: none;
+
+  text-align: center;
+
+  min-width: 230px;
+}
+
+.floating-notification.show {
+
+  transform:
+    translate(-50%, 0);
+
+  opacity: 1;
+
+}
+
+.floating-notification.success {
+
+  background: #159447;
+
+}
+
+.floating-notification.error {
+
+  background: #d93025;
+
+}
+
+.floating-notification.warning {
+
+  background: #e69500;
+
+}
+
+
+/* =========================================
+   SISWA TERAKHIR
+========================================= */
+
+.last-student {
+
+  margin-top: 15px;
+
+  padding: 18px;
+
+  border-radius: 15px;
+
+  background: #eef9f0;
+
+  text-align: center;
+
+}
+
+.last-student h3 {
+
+  margin-top: 0;
+
+}
+
+#lastStudentName {
+
+  font-size: 20px;
+
+  font-weight: bold;
+
+}
+
+
+/* =========================================
+   RESPONSIVE HP
+========================================= */
+
+@media (max-width: 600px) {
+
+  #scannerContainer {
+
+    max-width: 100%;
+
+  }
+
+  #reader {
+
+    min-height: 250px;
+
+  }
+
+}
